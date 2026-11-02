@@ -25,7 +25,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "DM Sans", Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: var(--charcoal);
     background: var(--ivory);
     line-height: 1.6;
@@ -55,7 +55,7 @@ img {
 .home-page h2,
 .home-page h3,
 .home-page h4 {
-    font-family: "Manrope", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .home-page em {
@@ -286,7 +286,7 @@ footer {
     align-items: center;
     gap: 11px;
     color: var(--forest);
-    font-family: "Manrope", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
     font-size: 1.25rem;
     letter-spacing: -.8px;
@@ -565,7 +565,7 @@ footer {
 }
 
 .welcome-image-caption strong {
-    font-family: "Manrope", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: .9rem;
 }
 
@@ -895,7 +895,7 @@ footer {
 }
 
 .decoration-mark {
-    font-family: "Manrope", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 9rem;
     line-height: 1;
     font-weight: 800;
