@@ -313,6 +313,8 @@ footer {
     display: flex;
     align-items: center;
     gap: 27px;
+    position: relative;
+    z-index: 101;
 }
 
 .home-nav > a {
@@ -1171,7 +1173,7 @@ footer {
     .home-nav {
         display: none;
         position: absolute;
-        top: 75px;
+        top: 100%;
         left: 0;
         right: 0;
         padding: 15px 6% 25px;
@@ -1421,69 +1423,5 @@ footer {
 
     .footer-about {
         grid-column: auto;
-    }
-}
-
-css
-/* Mobile Navigation */
-@media (max-width: 760px) {
-    .home-header {
-        position: relative;
-    }
-
-    .mobile-menu-toggle {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        cursor: pointer;
-        border: none;
-        background: transparent;
-        padding: 10px;
-        z-index: 1001;
-    }
-
-    .mobile-menu-toggle span {
-        display: block;
-        width: 25px;
-        height: 2px;
-        background: #2879B9;
-        transition: 0.3s ease;
-    }
-
-    .home-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 12px 20px 20px;
-        background: #FFFFFF;
-        box-shadow: 0 12px 20px rgba(18, 59, 93, 0.12);
-        z-index: 1000;
-    }
-
-    .home-nav.is-open {
-        display: flex;
-    }
-
-    .home-nav a {
-        padding: 14px 10px;
-        border-bottom: 1px solid #DCE8F0;
-    }
-
-    .mobile-menu-toggle.is-active span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    .mobile-menu-toggle.is-active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-toggle.is-active span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
     }
 }
