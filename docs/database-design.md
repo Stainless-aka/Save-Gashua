@@ -1,0 +1,1 @@
+# Database design\n\nThe donations table stores private donor-submitted details. Records start as `donor_reported`; bank reconciliation is a factual status, not an approval decision.\n

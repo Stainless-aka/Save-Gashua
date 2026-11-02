@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support Save Gashua's diabetes awareness, screening and community care initiatives through a direct bank transfer.">
+    <title>Donate | Save Gashua</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home-page">
+
+    <div class="announcement-bar">
+        <p>Building a healthier Gashua, together.</p>
+    </div>
+
+    <header class="home-header">
+        <a class="home-brand" href="index.html">
+            <span class="brand-mark">♥</span>
+            <span>Save Gashua</span>
+        </a>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="home-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="mission.html">Our Mission</a>
+            <a href="campaigns.html">Campaigns</a>
+            <a href="transparency.html">Transparency</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html" class="nav-donate active">Donate Now</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="health-hero">
+            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=2000&q=85');"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="health-hero-content">
+                <span class="hero-label">MAKE A CONTRIBUTION</span>
+                <h1>Be part of a healthier Gashua.</h1>
+                <p>Your support can help advance diabetes awareness, screening and community care initiatives.</p>
+            </div>
+        </section>
+
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <span class="section-label">WHY YOUR SUPPORT MATTERS</span>
+                <h2>Every contribution can make a difference.</h2>
+
+                <p class="lead">
+                    Support diabetes awareness, screening and care assistance in Gashua through a direct bank transfer.
+                </p>
+
+                <p>
+                    Save Gashua is a community-led fundraising initiative focused on improving health awareness and supporting access to diabetes-related care.
+                </p>
+
+                <p>
+                    After making a transfer, you may submit your contribution details so they can be recorded on our website.
+                </p>
+
+                <a href="transparency.html" class="text-link">Read our transparency commitment →</a>
+            </div>
+
+            <div class="welcome-image">
+                <img
+                    src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1000&q=85"
+                    alt="Hands holding a donation box">
+                <span class="image-caption">Together, we can support better community health.</span>
+            </div>
+        </section>
+
+        <section class="programmes-section">
+            <div class="section-heading">
+                <span class="section-label">HOW TO CONTRIBUTE</span>
+                <h2>Make your contribution in two steps</h2>
+                <p>Use the bank details provided by the organisers, then optionally record your contribution.</p>
+            </div>
+
+            <div class="programme-grid">
+                <article class="programme-card">
+                    <div class="programme-icon">01</div>
+                    <h3>Make a Bank Transfer</h3>
+                    <p>Transfer your chosen contribution to the official Save Gashua fundraising account.</p>
+                </article>
+
+                <article class="programme-card">
+                    <div class="programme-icon">02</div>
+                    <h3>Submit Your Details</h3>
+                    <p>Optionally provide your name, amount and transfer information for our contribution records.</p>
+                </article>
+
+                <article class="programme-card">
+                    <div class="programme-icon">03</div>
+                    <h3>Financial Reporting</h3>
+                    <p>Your submitted details are recorded as donor-reported contributions, separate from bank-reconciled deposits.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="donation-section" style="padding: 80px 6%; background: #F5F9FC;">
+            <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 30px; align-items: start;">
+
+                <div class="programme-card">
+                    <span class="section-label">STEP ONE</span>
+                    <h2>Bank Transfer Details</h2>
+
+                    <p style="margin: 24px 0;">
+                        <small>Bank name</small><br>
+                        <strong>To be provided by organisers</strong>
+                    </p>
+
+                    <p style="margin: 24px 0;">
+                        <small>Account name</small><br>
+                        <strong>To be provided by organisers</strong>
+                    </p>
+
+                    <p style="margin: 24px 0;">
+                        <small>Account number</small><br>
+                        <strong>To be provided by organisers</strong>
+                    </p>
+
+                    <div class="notice">
+                        <strong>Important</strong>
+                        <p>Only transfer funds to an account officially authorised by the account holder for Save Gashua fundraising.</p>
+                    </div>
+
+                    <p class="small" style="margin-top: 18px;">
+                        Official bank details will be published once confirmed by the organisers.
+                    </p>
+                </div>
+
+                <div class="programme-card">
+                    <span class="section-label">STEP TWO</span>
+                    <h2>Record Your Contribution</h2>
+
+                    <p style="margin-bottom: 24px;">
+                        This optional form records the details you provide after making a transfer.
+                    </p>
+
+                    <form id="donation-form">
+
+                        <label for="donor-name">
+                            Your name
+                            <input
+                                id="donor-name"
+                                name="donorName"
+                                type="text"
+                                placeholder="Enter your full name"
+                                maxlength="120"
+                                required>
+                        </label>
+
+                        <label for="donor-email">
+                            Email address (optional)
+                            <input
+                                id="donor-email"
+                                name="email"
+                                type="email"
+                                placeholder="you@example.com">
+                        </label>
+
+                        <label for="donation-amount">
+                            Amount transferred (₦)
+                            <input
+                                id="donation-amount"
+                                name="amount"
+                                type="number"
+                                min="1"
+                                step="1"
+                                placeholder="e.g. 5000"
+                                required>
+                        </label>
+
+                        <label for="transfer-date">
+                            Transfer date
+                            <input
+                                id="transfer-date"
+                                name="transferDate"
+                                type="date"
+                                required>
+                        </label>
+
+                        <label for="transfer-reference">
+                            Transfer reference (optional)
+                            <input
+                                id="transfer-reference"
+                                name="reference"
+                                type="text"
+                                maxlength="120"
+                                placeholder="Enter transfer reference">
+                        </label>
+
+                        <button class="button" type="submit" style="width: 100%;">
+                            Submit Contribution Details
+                        </button>
+
+                        <p id="form-message" class="small" aria-live="polite" style="margin-top: 16px;"></p>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="community-feature">
+            <div class="community-feature-image">
+                <img
+                    src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1200&q=85"
+                    alt="Healthcare professional supporting community health">
+            </div>
+
+            <div class="community-feature-content">
+                <span class="section-label">OUR COMMITMENT TO YOU</span>
+                <h2>Honest records. Responsible reporting.</h2>
+
+                <p>
+                    Submitted contribution details are automatically recorded as donor-reported contributions.
+                </p>
+
+                <p>
+                    Submission does not independently confirm that funds reached the bank account. Financial reports will distinguish reported contributions from bank-reconciled deposits.
+                </p>
+
+                <p>
+                    We will never intentionally expose donor email addresses, bank details or private transaction references in public reports.
+                </p>
+
+                <a href="transparency.html" class="text-link">Learn about financial accountability →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="home-footer">
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="index.html" class="home-brand">
+                    <span class="brand-mark">♥</span>
+                    <span>Save Gashua</span>
+                </a>
+                <p>A community-led initiative working towards better health awareness and support in Gashua, Yobe State.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="about.html">About Us</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="campaigns.html">Campaigns</a>
+                <a href="transparency.html">Transparency</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Get Involved</h3>
+                <a href="donate.html">Donate</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span data-year>2026</span> Save Gashua. All rights reserved.</p>
+            <p>Building a healthier community, together.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/donation.js"></script>
+
+</body>
+</html>

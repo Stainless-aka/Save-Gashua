@@ -1,0 +1,3 @@
+-- RLS is enabled in schema.sql.
+-- Keep donor records private. Add role-checked admin access after implementing
+-- admin authentication. Do not grant anonymous users access to donor details.
