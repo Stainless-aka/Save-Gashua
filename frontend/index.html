@@ -8,310 +8,44 @@
     <meta name="description" content="Save Gashua is a community-led health initiative supporting diabetes awareness, early screening and care assistance in Gashua, Yobe State.">
 
     <title>Save Gashua | Building a Healthier Community</title>
-
-    <!-- Font connections -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Critical above-the-fold styles prevent an unstyled first paint -->
-    <style>
-        :root {
-            --forest: #2879B9;
-            --forest-dark: #14527A;
-            --charcoal: #172B3A;
-            --ivory: #F5F9FC;
-            --muted: #62798A;
-            --line: #DCE8F0;
-            --white: #FFFFFF;
-            --teal: #2879B9;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            margin: 0;
-            color: var(--charcoal);
-            background: var(--ivory);
-            font-family: "DM Sans", Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        button, input, textarea, select { font: inherit; }
-        a { text-decoration: none; }
-        img { display: block; max-width: 100%; }
-
-        .home-page { overflow-x: hidden; }
-        .home-page h1, .home-page h2, .home-page h3, .home-page h4 {
-            font-family: "Manrope", Arial, sans-serif;
-        }
-        .home-page em {
-            color: var(--forest);
-            font-family: Georgia, serif;
-            font-weight: 400;
-        }
-
-        .announcement-bar {
-            min-height: 36px;
-            padding: 7px 7%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 18px;
-            background: var(--forest-dark);
-            color: var(--white);
-            font-size: .7rem;
-        }
-        .announcement-bar p { margin: 0; color: #E0E9F2; }
-        .announcement-bar a { color: #D5E8F5; font-weight: 700; }
-
-        .home-header {
-            min-height: 86px;
-            padding: 0 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 100;
-            background: var(--white);
-            border-bottom: 1px solid #E9ECE7;
-        }
-        .home-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 11px;
-            color: var(--forest);
-            font-family: "Manrope", Arial, sans-serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-        .brand-mark {
-            width: 38px;
-            height: 38px;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            background: var(--forest);
-            color: var(--white);
-        }
-        .brand-name strong { color: var(--teal); }
-        .home-nav { display: flex; align-items: center; gap: 27px; }
-        .home-nav > a {
-            color: #48574F;
-            font-size: .81rem;
-            font-weight: 600;
-        }
-        .home-nav > a:hover, .home-nav > a.active { color: var(--teal); }
-        .home-nav .home-nav-cta {
-            padding: 13px 19px;
-            background: var(--forest);
-            color: var(--white);
-        }
-        .mobile-menu-toggle {
-            display: none;
-            border: 0;
-            background: transparent;
-        }
-
-        .health-hero {
-            position: relative;
-            display: flex;
-            align-items: center;
-            min-height: 680px;
-            height: min(760px, calc(100vh - 122px));
-            overflow: hidden;
-            background: var(--forest-dark);
-            color: var(--white);
-        }
-        .hero-background { position: absolute; inset: 0; }
-        .hero-background img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 40%;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(9,35,28,.94), rgba(9,35,28,.83) 42%, rgba(9,35,28,.35) 75%, rgba(9,35,28,.12));
-        }
-        .health-hero-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 70px 8% 100px;
-        }
-        .hero-label {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            color: #D5E1D6;
-            font-size: .66rem;
-            font-weight: 800;
-            letter-spacing: .16em;
-        }
-        .hero-label > span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #9BC7A5;
-        }
-        .health-hero h1 {
-            max-width: 750px;
-            margin: 30px 0 22px;
-            color: var(--white);
-            font-size: clamp(3.5rem, 7vw, 6.3rem);
-            line-height: 1.04;
-            letter-spacing: -.07em;
-        }
-        .health-hero h1 em { color: #C4D7C4; }
-        .health-hero-content > p {
-            max-width: 540px;
-            margin: 0;
-            color: #E0E9E2;
-            font-size: 1.02rem;
-            line-height: 1.9;
-        }
-        .hero-buttons {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 36px;
-        }
-        .primary-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 22px;
-            padding: 16px 23px;
-            background: var(--forest);
-            color: var(--white);
-            font-size: .83rem;
-            font-weight: 700;
-        }
-        .health-hero .primary-button { background: var(--white); color: var(--forest); }
-        .hero-secondary-button { color: var(--white); font-size: .84rem; font-weight: 700; }
-        .hero-bottom-note, .hero-scroll-indicator {
-            position: absolute;
-            z-index: 2;
-            bottom: 35px;
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            color: #D6E1D7;
-            font-size: .62rem;
-            font-weight: 700;
-            letter-spacing: .13em;
-        }
-        .hero-bottom-note { left: 8%; }
-        .hero-note-line { width: 35px; height: 1px; background: #A6BBA9; }
-        .hero-scroll-indicator { right: 8%; font-size: .58rem; }
-
-        @media (max-width: 1050px) {
-            .home-nav { gap: 16px; }
-            .home-nav > a { font-size: .75rem; }
-        }
-        @media (max-width: 760px) {
-            .announcement-bar { padding: 8px 5%; gap: 8px; flex-wrap: wrap; text-align: center; }
-            .home-header { min-height: 76px; }
-            .mobile-menu-toggle {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 5px;
-                padding: 10px;
-                cursor: pointer;
-            }
-            .mobile-menu-toggle span {
-                display: block;
-                width: 25px;
-                height: 2px;
-                background: var(--forest);
-            }
-            .home-nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 12px 20px 20px;
-                background: var(--white);
-                box-shadow: 0 12px 20px rgba(18,59,93,.12);
-            }
-            .home-nav.is-open { display: flex; }
-            .home-nav > a { padding: 14px 10px; border-bottom: 1px solid var(--line); }
-            .home-nav .home-nav-cta { margin-top: 10px; text-align: center; }
-            .health-hero { min-height: 620px; height: auto; }
-            .health-hero-content { padding: 85px 7% 120px; }
-            .health-hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
-            .hero-bottom-note { left: 7%; }
-            .hero-scroll-indicator { right: 7%; }
-        }
-    </style>
-
-    <!-- Request the main stylesheet early; the regular stylesheet link remains render-blocking -->
+<!-- Load the shared stylesheet before the browser paints the page -->
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Typography is non-critical; the system-font fallback renders immediately -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Image host connection -->
+<!-- Image host connection -->
     <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body class="home-page">
 
     <!-- ANNOUNCEMENT BAR -->
-    <div class="announcement-bar">
+        <div class="announcement-bar">
         <p>Building a healthier Gashua, one community at a time.</p>
         <a href="about.html">Discover our mission <span>→</span></a>
     </div>
 
     <!-- HEADER -->
-    <header class="home-header">
-
+        <header class="home-header">
         <a href="index.html" class="home-brand" aria-label="Save Gashua homepage">
             <span class="brand-mark">S</span>
             <span class="brand-name">SAVE <strong>GASHUA</strong></span>
         </a>
-
-        <button
-            class="mobile-menu-toggle"
-            type="button"
-            aria-label="Open navigation"
-            aria-expanded="false"
-            aria-controls="home-navigation"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="home-navigation">
+            <span></span><span></span><span></span>
         </button>
-
-        <nav class="home-nav" id="home-navigation">
+        <nav class="home-nav" id="home-navigation" aria-label="Main navigation">
             <a href="index.html" class="active">Home</a>
             <a href="about.html">About Us</a>
             <a href="mission.html">Our Mission</a>
             <a href="campaigns.html">Campaigns</a>
             <a href="transparency.html">Transparency</a>
             <a href="contact.html">Contact</a>
-
-            <a href="donate.html" class="home-nav-cta">
-                Donate Now <span>↗</span>
-            </a>
+            <a href="donate.html" class="home-nav-cta">Donate Now <span>↗</span></a>
         </nav>
-
     </header>
 
     <main>
