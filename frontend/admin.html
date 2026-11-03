@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123B5D">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gallery Admin | Save Gashua</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+    <main class="admin-shell">
+        <header class="admin-topbar">
+            <a href="index.html" class="home-brand"><span class="brand-mark">S</span><span class="brand-name">SAVE <strong>GASHUA</strong></span></a>
+            <a href="gallery.html" target="_blank" rel="noopener">View public gallery ↗</a>
+        </header>
+
+        <section class="admin-intro">
+            <span class="section-eyebrow">CONTENT MANAGEMENT</span>
+            <h1>Gallery <em>Manager</em></h1>
+            <p>Upload and manage the photographs displayed on the Save Gashua gallery.</p>
+        </section>
+
+        <section id="login-panel" class="admin-panel admin-login">
+            <h2>Administrator sign in</h2>
+            <p>Use your private administrator password to continue.</p>
+            <form id="login-form">
+                <label for="admin-password">Password</label>
+                <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+                <button class="admin-button" type="submit">Sign in</button>
+            </form>
+            <p class="admin-message" id="login-message" role="status"></p>
+        </section>
+
+        <section id="dashboard" hidden>
+            <div class="admin-actions">
+                <div><h2>Manage photographs</h2><p>Only published photographs appear on the public gallery.</p></div>
+                <button id="logout-button" class="admin-button admin-button-outline" type="button">Sign out</button>
+            </div>
+
+            <form id="upload-form" class="admin-panel upload-form">
+                <h2>Add a photograph</h2>
+                <div class="admin-form-grid">
+                    <label>Photograph title<input name="title" maxlength="120" required placeholder="e.g. Community screening"></label>
+                    <label>Description <span>(optional)</span><textarea name="description" maxlength="500" rows="3" placeholder="Add a short description"></textarea></label>
+                </div>
+                <label class="file-picker" for="gallery-image">
+                    <span class="file-picker-icon">＋</span>
+                    <strong id="file-label">Choose an image</strong>
+                    <small>JPG, PNG or WebP · Maximum 8 MB</small>
+                    <input id="gallery-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
+                </label>
+                <img id="image-preview" class="image-preview" alt="Selected image preview" hidden>
+                <button class="admin-button" type="submit">Upload photograph</button>
+                <p class="admin-message" id="upload-message" role="status"></p>
+            </form>
+
+            <div class="gallery-admin-list">
+                <div class="admin-list-heading"><h2>Uploaded photographs</h2><span id="image-count">0 images</span></div>
+                <div id="admin-gallery-grid" class="admin-gallery-grid"></div>
+                <p id="empty-gallery" class="empty-gallery" hidden>No photographs uploaded yet.</p>
+            </div>
+        </section>
+    </main>
+    <script src="js/admin.js"></script>
+</body>
+</html>
