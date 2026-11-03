@@ -1,4 +1,4 @@
-const supabase = window.saveGashuaSupabase;
+const sgClient = window.saveGashuaSupabase;
 const loginPanel = document.getElementById("login-panel");
 const dashboard = document.getElementById("dashboard");
 const loginForm = document.getElementById("login-form");
@@ -24,7 +24,7 @@ function requireAdmin(user) {
 }
 
 async function loadGallery() {
-    const { data: images, error } = await supabase
+    const { data: images, error } = await sgClient
         .from("gallery_images")
         .select("id,title,description,image_url,storage_path,is_published,created_at")
         .order("created_at", { ascending: false });
@@ -60,7 +60,7 @@ async function loadGallery() {
         toggle.textContent = item.is_published ? "Unpublish" : "Publish";
         toggle.addEventListener("click", async () => {
             toggle.disabled = true;
-            const { error } = await supabase.from("gallery_images")
+            const { error } = await sgClient.from("gallery_images")
                 .update({ is_published: !item.is_published }).eq("id", item.id);
             if (error) {
                 alert("Could not update photograph: " + error.message);
@@ -77,13 +77,13 @@ async function loadGallery() {
         remove.addEventListener("click", async () => {
             if (!confirm("Delete this photograph permanently?")) return;
             remove.disabled = true;
-            const { error: rowError } = await supabase.from("gallery_images").delete().eq("id", item.id);
+            const { error: rowError } = await sgClient.from("gallery_images").delete().eq("id", item.id);
             if (rowError) {
                 alert("Could not delete photograph: " + rowError.message);
                 remove.disabled = false;
                 return;
             }
-            const { error: fileError } = await supabase.storage.from(bucket).remove([item.storage_path]);
+            const { error: fileError } = await sgClient.storage.from(bucket).remove([item.storage_path]);
             if (fileError) console.error("Image file cleanup failed:", fileError);
             await loadGallery();
         });
@@ -100,7 +100,7 @@ async function handleLogin() {
     const button = document.getElementById("sign-in-button");
     if (!loginForm.reportValidity()) return;
 
-    if (!supabase) {
+    if (!sgClient) {
         showMessage(message, "The sign-in service could not load. Refresh the page and try again.", "error");
         return;
     }
@@ -108,13 +108,13 @@ async function handleLogin() {
     button.disabled = true;
     showMessage(message, "Signing in...");
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await sgClient.auth.signInWithPassword({
             email: loginForm.elements.email.value.trim(),
             password: loginForm.elements.password.value
         });
         if (error) throw error;
         if (!requireAdmin(data.user)) {
-            await supabase.auth.signOut();
+            await sgClient.auth.signOut();
             throw new Error("This account does not have administrator access.");
         }
         loginForm.reset();
@@ -158,15 +158,15 @@ uploadForm.addEventListener("submit", async event => {
     const storagePath = "gallery/" + crypto.randomUUID() + "." + extension;
 
     try {
-        const { error: uploadError } = await supabase.storage.from(bucket).upload(storagePath, selectedFile, {
+        const { error: uploadError } = await sgClient.storage.from(bucket).upload(storagePath, selectedFile, {
             contentType: selectedFile.type,
             cacheControl: "3600",
             upsert: false
         });
         if (uploadError) throw uploadError;
 
-        const { data: publicUrl } = supabase.storage.from(bucket).getPublicUrl(storagePath);
-        const { error: insertError } = await supabase.from("gallery_images").insert({
+        const { data: publicUrl } = sgClient.storage.from(bucket).getPublicUrl(storagePath);
+        const { error: insertError } = await sgClient.from("gallery_images").insert({
             title: uploadForm.elements.title.value.trim(),
             description: uploadForm.elements.description.value.trim(),
             image_url: publicUrl.publicUrl,
@@ -174,7 +174,7 @@ uploadForm.addEventListener("submit", async event => {
             is_published: true
         });
         if (insertError) {
-            await supabase.storage.from(bucket).remove([storagePath]);
+            await sgClient.storage.from(bucket).remove([storagePath]);
             throw insertError;
         }
 
@@ -193,7 +193,7 @@ uploadForm.addEventListener("submit", async event => {
 });
 
 document.getElementById("logout-button").addEventListener("click", async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await sgClient.auth.signOut();
     if (error) {
         alert("Could not sign out: " + error.message);
         return;
@@ -203,8 +203,8 @@ document.getElementById("logout-button").addEventListener("click", async () => {
 
 (async function init() {
     try {
-        if (!supabase) throw new Error("Supabase client did not load. Check your connection and refresh.");
-        const { data: { session }, error } = await supabase.auth.getSession();
+        if (!sgClient) throw new Error("Supabase client did not load. Check your connection and refresh.");
+        const { data: { session }, error } = await sgClient.auth.getSession();
         if (error) throw error;
         const user = session?.user;
         if (!requireAdmin(user)) {
