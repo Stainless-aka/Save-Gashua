@@ -114,7 +114,10 @@ async function removeGalleryImage(req, res) {
     const image = db.prepare("SELECT cloudinary_public_id FROM gallery_images WHERE id = ?").get(id);
     if (!image) return res.status(404).json({ error: "Gallery image not found." });
     try {
-        if (image.cloudinary_public_id && cloudinaryConfigReady()) await deleteFromCloudinary(image.cloudinary_public_id);
+        if (image.cloudinary_public_id && !cloudinaryConfigReady()) {
+            return res.status(503).json({ error: "Cloudinary is not configured. The image record was kept." });
+        }
+        if (image.cloudinary_public_id) await deleteFromCloudinary(image.cloudinary_public_id);
         db.prepare("DELETE FROM gallery_images WHERE id = ?").run(id);
         res.json({ message: "Gallery image deleted." });
     } catch (error) {
