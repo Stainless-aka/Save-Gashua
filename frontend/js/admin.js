@@ -55,6 +55,75 @@ async function loadGallery() {
 
         const controls = document.createElement("div");
         controls.className = "admin-image-controls";
+
+        const editor = document.createElement("form");
+        editor.className = "admin-post-editor";
+        editor.hidden = true;
+
+        const titleLabel = document.createElement("label");
+        titleLabel.textContent = "Title";
+        const titleInput = document.createElement("input");
+        titleInput.type = "text";
+        titleInput.maxLength = 120;
+        titleInput.required = true;
+        titleInput.value = item.title;
+        titleLabel.append(titleInput);
+
+        const descriptionLabel = document.createElement("label");
+        descriptionLabel.textContent = "Description";
+        const descriptionInput = document.createElement("textarea");
+        descriptionInput.maxLength = 500;
+        descriptionInput.rows = 3;
+        descriptionInput.value = item.description || "";
+        descriptionLabel.append(descriptionInput);
+
+        const editorActions = document.createElement("div");
+        editorActions.className = "admin-editor-actions";
+        const saveEdit = document.createElement("button");
+        saveEdit.type = "submit";
+        saveEdit.textContent = "Save changes";
+        const cancelEdit = document.createElement("button");
+        cancelEdit.type = "button";
+        cancelEdit.textContent = "Cancel";
+        cancelEdit.addEventListener("click", () => {
+            titleInput.value = item.title;
+            descriptionInput.value = item.description || "";
+            editor.hidden = true;
+            editButton.hidden = false;
+        });
+        editorActions.append(saveEdit, cancelEdit);
+        editor.append(titleLabel, descriptionLabel, editorActions);
+        editor.addEventListener("submit", async event => {
+            event.preventDefault();
+            const updatedTitle = titleInput.value.trim();
+            const updatedDescription = descriptionInput.value.trim();
+            if (!updatedTitle) {
+                titleInput.focus();
+                return;
+            }
+            saveEdit.disabled = true;
+            saveEdit.textContent = "Saving...";
+            const { error } = await sgClient.from("gallery_images")
+                .update({ title: updatedTitle, description: updatedDescription })
+                .eq("id", item.id);
+            if (error) {
+                alert("Could not save changes: " + error.message);
+                saveEdit.disabled = false;
+                saveEdit.textContent = "Save changes";
+                return;
+            }
+            await loadGallery();
+        });
+
+        const editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.textContent = "Edit";
+        editButton.addEventListener("click", () => {
+            editor.hidden = false;
+            editButton.hidden = true;
+            titleInput.focus();
+        });
+
         const toggle = document.createElement("button");
         toggle.type = "button";
         toggle.textContent = item.is_published ? "Unpublish" : "Publish";
@@ -88,8 +157,8 @@ async function loadGallery() {
             await loadGallery();
         });
 
-        controls.append(toggle, remove);
-        content.append(title, description, meta, controls);
+        controls.append(editButton, toggle, remove);
+        content.append(title, description, meta, controls, editor);
         card.append(image, content);
         galleryGrid.append(card);
     });
