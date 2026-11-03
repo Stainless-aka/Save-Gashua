@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#123B5D">
-    <meta name="description" content="Explore illustrative images connected to Save Gashua's focus on diabetes awareness, early screening and community care.">
+    <meta name="description" content="Explore photographs and updates from Save Gashua community health activities.">
     <title>Gallery | Save Gashua</title>
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
@@ -53,35 +53,11 @@
             <div class="gallery-heading">
                 <span class="section-eyebrow">A CLOSER LOOK</span>
                 <h2>Health, awareness <em>and care.</em></h2>
-                <p>These photographs are illustrative stock images used to represent our areas of focus. They are not photographs of verified Save Gashua activities.</p>
+                <p>Photographs shared here will document Save Gashua activities, community health awareness and screening initiatives.</p>
             </div>
 
-            <div class="gallery-grid">
-                <figure class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85" alt="Healthcare professional attending to a patient" loading="lazy">
-                    <figcaption><span>01</span><strong>Community Healthcare</strong></figcaption>
-                </figure>
-                <figure class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=85" alt="Medical professional working in a healthcare environment" loading="lazy">
-                    <figcaption><span>02</span><strong>Health Awareness</strong></figcaption>
-                </figure>
-                <figure class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1000&q=85" alt="Healthcare consultation and medical screening" loading="lazy">
-                    <figcaption><span>03</span><strong>Early Screening</strong></figcaption>
-                </figure>
-                <figure class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1000&q=85" alt="Hospital interior representing access to healthcare" loading="lazy">
-                    <figcaption><span>04</span><strong>Access to Care</strong></figcaption>
-                </figure>
-                <figure class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1000&q=85" alt="Healthcare worker supporting a patient" loading="lazy">
-                    <figcaption><span>05</span><strong>Patient Support</strong></figcaption>
-                </figure>
-                <figure class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1000&q=85" alt="Medical professional using a stethoscope" loading="lazy">
-                    <figcaption><span>06</span><strong>Health and Wellness</strong></figcaption>
-                </figure>
-            </div>
+            <div class="gallery-grid" id="public-gallery-grid" aria-live="polite"></div>
+            <p class="gallery-empty" id="gallery-empty">Loading photographs...</p>
         </section>
 
         <section class="gallery-cta">
@@ -130,5 +106,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 </html>
