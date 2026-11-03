@@ -1,15 +1,9 @@
 {
   "name": "save-gashua",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
+  "description": "Static Save Gashua website powered by Supabase",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "node --watch backend/server.js"
-  },
-  "dependencies": {
-    "better-sqlite3": "^13.0.3",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.2",
-    "helmet": "^8.0.0"
+    "check": "node --check frontend/js/main.js && node --check frontend/js/supabase-client.js && node --check frontend/js/gallery.js && node --check frontend/js/donation.js && node --check frontend/js/admin.js"
   }
 }
