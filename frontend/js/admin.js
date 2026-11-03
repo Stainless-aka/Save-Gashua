@@ -95,10 +95,16 @@ async function loadGallery() {
     });
 }
 
-loginForm.addEventListener("submit", async event => {
-    event.preventDefault();
+async function handleLogin() {
     const message = document.getElementById("login-message");
-    const button = loginForm.querySelector("button");
+    const button = document.getElementById("sign-in-button");
+    if (!loginForm.reportValidity()) return;
+
+    if (!supabase) {
+        showMessage(message, "The sign-in service could not load. Refresh the page and try again.", "error");
+        return;
+    }
+
     button.disabled = true;
     showMessage(message, "Signing in...");
     try {
@@ -119,6 +125,12 @@ loginForm.addEventListener("submit", async event => {
     } finally {
         button.disabled = false;
     }
+}
+
+document.getElementById("sign-in-button").addEventListener("click", handleLogin);
+loginForm.addEventListener("submit", event => {
+    event.preventDefault();
+    handleLogin();
 });
 
 imageInput.addEventListener("change", () => {
