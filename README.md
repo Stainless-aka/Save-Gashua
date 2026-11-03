@@ -1,218 +1,58 @@
 # Save Gashua
 
-**A community-led health fundraising initiative focused on diabetes awareness, screening and support.**
+**A community-led health initiative focused on diabetes awareness, screening and care assistance in Gashua, Bade LGA, Yobe State, Nigeria.**
 
-Save Gashua aims to support better health awareness and access to diabetes-related care in Gashua, Bade LGA, Yobe State, Nigeria.
-
-The initiative brings community members, supporters and healthcare professionals together to promote awareness, encourage screening and support individuals who may need assistance.
-
-## About the Project
-
-Save Gashua is designed to provide an online platform where people can:
-
-- Learn about the initiative and its health objectives.
-- Explore community health campaigns.
-- Support fundraising activities through direct bank transfers.
-- Submit contribution details for record-keeping.
-- Access financial transparency and accountability reports.
-- Contact the initiative regarding enquiries and partnerships.
-
-Save Gashua is a community-led initiative. It does not claim registered-charity status unless and until that status is legally established.
-
-## Technology Stack
+## Technology
 
 | Component | Technology |
 |---|---|
-| Frontend | HTML, CSS, Vanilla JavaScript |
+| Frontend | HTML, CSS and Vanilla JavaScript |
 | Backend | Node.js and Express |
-| Database | Supabase |
-| Donation Method | Direct bank transfer |
-| Development Environment | Node.js and npm |
+| Database | SQLite with better-sqlite3 |
+| Gallery image storage | Cloudinary |
+| Donations | Manual bank transfer and donor-reported records |
 
-## Core Features
+## Gallery management
 
-### 1. Community Information
-- About Save Gashua.
-- Mission and objectives.
-- Health campaigns and initiatives.
-- Contact information.
+The public gallery reads published photographs from `GET /api/gallery`. Administrators manage photographs at `/admin.html`.
 
-### 2. Donation System
-- Direct bank transfer instructions.
-- Optional contribution reporting form.
-- Donor information and transfer details collection.
-- Automatic recording of submitted contributions.
+Administrators can sign in, upload JPG/PNG/WebP images up to 8 MB, add a title and optional description, publish or hide photographs, and delete photographs. Cloudinary stores image files. SQLite stores their title, description, secure image URL, Cloudinary public ID and publication state.
 
-### 3. Transparency and Accountability
-- Distinction between donor-reported contributions and bank-reconciled deposits.
-- Financial contribution reporting.
-- Programme expense reporting.
-- Protection of private donor information.
+Cloudinary credentials and administrator secrets must only exist in the backend environment.
 
-## Manual Donation Workflow
+## Local development
 
-Save Gashua uses a manual bank transfer process. No payment gateway is currently integrated.
-
-The workflow is:
-
-1. A donor transfers funds to the officially authorised receiving bank account.
-2. The donor may submit contribution details through the website.
-3. The backend records the submission automatically with the status `donor_reported`.
-4. Submitted information is retained for financial record-keeping.
-5. Bank reconciliation is performed separately against the receiving account.
-
-**Important:** A donor-submitted amount is not independently confirmed. Submitting a contribution form does not prove that funds reached the receiving bank account.
-
-There is no approval or rejection queue for donor submissions.
-
-Public financial reports must distinguish between:
-- **Donor-reported contributions:** Amounts submitted by donors through the website.
-- **Bank-reconciled deposits:** Amounts independently checked against the receiving bank account.
-
-Never describe a transfer as bank-confirmed without checking the receiving account.
-
-## Database
-
-Supabase is the designated database platform for the project.
-
-The database should support:
-- Donation records.
-- Donor-submitted information.
-- Contribution reporting statuses.
-- Financial reconciliation records.
-- Programme expense records.
-
-Database access must be protected through appropriate authentication, authorization and Row Level Security (RLS) policies.
-
-## Security and Privacy
-
-The project must follow these principles:
-
-- Keep Supabase service-role credentials on the server.
-- Never expose private API keys in frontend JavaScript.
-- Validate and sanitize submitted information on the backend.
-- Protect administrative operations with authentication and authorization.
-- Apply rate limiting to public submission endpoints.
-- Configure appropriate Supabase RLS policies.
-- Maintain secure database backups.
-- Avoid exposing donor email addresses, bank details or private transaction references in public reports.
-- Do not publish bank account details until the account holder authorizes their use.
-
-## Local Development Setup
-
-### Prerequisites
-
-- Node.js
-- npm
-- Supabase project and credentials
-
-### 1. Clone the repository
-
-```bash
-git clone <repository-url>
-cd save-gashua
-```
-
-### 2. Install dependencies
+Requirements: Node.js 18.18+ and npm.
 
 ```bash
 npm install
-```
-
-### 3. Configure environment variables
-
-Copy the example environment file:
-
-```bash
 cp .env.example .env
-```
-
-Add the required server-side Supabase credentials to `.env`.
-
-Never commit your `.env` file or expose private credentials publicly.
-
-### 4. Start the development server
-
-```bash
 npm run dev
 ```
 
-### 5. Open the application
+Set every value in `.env` before using the admin dashboard. Generate a long random `SESSION_SECRET` and use a unique administrator password of at least 12 characters. Keep `.env` private and never commit it.
 
-Visit:
+- Website: http://localhost:3000
+- Gallery: http://localhost:3000/gallery.html
+- Admin dashboard: http://localhost:3000/admin.html
+- Health check: http://localhost:3000/health
 
-```text
-http://localhost:3000
-```
+## Database
 
-## Project Structure
+SQLite is initialized from `database/schema.sql` and stored locally at `database/save-gashua.db`. The schema creates donation and gallery tables. Keep the database file out of public web directories and back it up securely.
 
-```text
-save-gashua/
-├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── routes/
-│   └── server.js
-│
-├── database/
-│   └── schema.sql
-│
-├── docs/
-│   ├── database-design.md
-│   ├── payment-flow.md
-│   └── project-overview.md
-│
-├── frontend/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   ├── donation.js
-│   │   └── main.js
-│   ├── index.html
-│   ├── about.html
-│   ├── mission.html
-│   ├── campaigns.html
-│   ├── transparency.html
-│   ├── contact.html
-│   └── donate.html
-│
-├── .env.example
-├── .gitignore
-├── package.json
-├── package-lock.json
-└── README.md
-```
+## Donation integrity
 
-*The structure describes the intended project organization; update it if the actual repository differs.*
+Donations are submitted through manual bank transfer. A donor-submitted record is marked `donor_reported`; it is not proof that money reached the receiving account. Only independently reconciled deposits may be described as bank-reconciled. Do not expose donor emails, private references or beneficiary details in public reports.
 
-## Production Readiness
+## Production checklist
 
-This project is a starter scaffold. Before production deployment, the following must be implemented and tested:
-
-- [ ] Admin authentication.
-- [ ] Role-based authorization.
-- [ ] Backend input validation.
-- [ ] API rate limiting.
-- [ ] Supabase Row Level Security policies.
-- [ ] Secure environment variable management.
-- [ ] Database backup and recovery procedures.
-- [ ] Bank reconciliation procedures.
-- [ ] Public financial reporting safeguards.
-- [ ] End-to-end donation submission testing.
-
-## Guiding Principles
-
-Save Gashua is built around:
-
-1. **Community:** Encouraging collective responsibility for better health.
-2. **Awareness:** Promoting reliable diabetes information.
-3. **Care:** Supporting screening and needs-based assistance.
-4. **Transparency:** Communicating fundraising activities honestly.
-5. **Accountability:** Maintaining responsible financial records.
-6. **Privacy:** Protecting donor and beneficiary information.
-
----
-
-**Save Gashua**  
-*Building a healthier community, together.*
+Before public deployment:
+- Configure all environment variables in the hosting provider.
+- Use HTTPS and a strong unique admin password and session secret.
+- Configure persistent storage for SQLite or migrate to a managed database.
+- Back up the database and test restoration.
+- Configure Cloudinary upload limits and monitor storage usage.
+- Test admin login, upload, publish, hide and delete flows.
+- Review donation reconciliation and privacy controls.
+- Publish only authentic, consented activity photographs.
