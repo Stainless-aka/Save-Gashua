@@ -105,6 +105,16 @@
         <p class="footer-legal">Save Gashua is presented as a community-led initiative and is not represented as a registered charity or NGO.</p>
     </footer>
 
+    <div id="gallery-lightbox" class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer" hidden>
+        <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close viewer">×</button>
+        <button id="lightbox-previous" class="lightbox-nav lightbox-previous" type="button" aria-label="Previous photograph">‹</button>
+        <figure class="lightbox-figure">
+            <img id="lightbox-image" alt="">
+            <figcaption id="lightbox-caption"></figcaption>
+        </figure>
+        <button id="lightbox-next" class="lightbox-nav lightbox-next" type="button" aria-label="Next photograph">›</button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-client.js"></script>
     <script src="js/main.js"></script>
