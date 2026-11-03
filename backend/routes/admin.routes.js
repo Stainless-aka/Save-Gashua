@@ -18,6 +18,9 @@ router.post("/login", (req, res) => {
     }
 
     const configuredPassword = process.env.ADMIN_PASSWORD || "";
+    if (configuredPassword.length < 12 || !process.env.SESSION_SECRET) {
+        return res.status(503).json({ error: "Admin authentication is not configured. Set ADMIN_PASSWORD and SESSION_SECRET on the server." });
+    }
     const suppliedPassword = typeof req.body?.password === "string" ? req.body.password : "";
     const supplied = Buffer.from(suppliedPassword);
     const expected = Buffer.from(configuredPassword);
