@@ -1,1 +1,9 @@
-node_modules/\n.env\n.DS_Store\n
+.env
+.env.*
+!.env.example
+
+node_modules/
+
+database/*.db
+database/*.db-shm
+database/*.db-wal
