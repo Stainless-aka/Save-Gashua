@@ -1568,3 +1568,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+.gallery-empty{margin:25px auto 0;text-align:center;color:var(--muted);font-size:.9rem;line-height:1.8}
+.gallery-card-description{margin:0;padding:0 21px 18px;color:var(--muted);font-size:.8rem;line-height:1.7}
