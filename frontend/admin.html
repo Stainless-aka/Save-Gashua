@@ -19,7 +19,7 @@
         <section class="admin-intro">
             <span class="section-eyebrow">CONTENT MANAGEMENT</span>
             <h1>Gallery <em>Manager</em></h1>
-            <p>Upload and manage the photographs displayed on the Save Gashua gallery.</p>
+            <p>Create event albums, add multiple photographs and manage what appears in the public gallery.</p>
         </section>
 
         <section id="login-panel" class="admin-panel admin-login">
@@ -37,29 +37,29 @@
 
         <section id="dashboard" hidden>
             <div class="admin-actions">
-                <div><h2>Manage photographs</h2><p>Only published photographs appear on the public gallery.</p></div>
+                <div><h2>Manage event albums</h2><p>Only published albums and their photographs appear on the public gallery.</p></div>
                 <button id="logout-button" class="admin-button admin-button-outline" type="button">Sign out</button>
             </div>
 
             <form id="upload-form" class="admin-panel upload-form">
-                <h2>Add a photograph</h2>
+                <h2>Create an event album</h2>
                 <div class="admin-form-grid">
                     <label>Photograph title<input name="title" maxlength="120" required placeholder="e.g. Community screening"></label>
                     <label>Description <span>(optional)</span><textarea name="description" maxlength="500" rows="3" placeholder="Add a short description"></textarea></label>
                 </div>
                 <label class="file-picker" for="gallery-image">
                     <span class="file-picker-icon">＋</span>
-                    <strong id="file-label">Choose an image</strong>
+                    <strong id="file-label">Choose event photographs</strong>
                     <small>JPG, PNG or WebP · Maximum 8 MB</small>
-                    <input id="gallery-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
+                    <input id="gallery-images" name="images" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
                 </label>
                 <img id="image-preview" class="image-preview" alt="Selected image preview" hidden>
-                <button class="admin-button" type="submit">Upload photograph</button>
+                <button class="admin-button" type="submit">Create album</button>
                 <p class="admin-message" id="upload-message" role="status"></p>
             </form>
 
             <div class="gallery-admin-list">
-                <div class="admin-list-heading"><h2>Uploaded photographs</h2><span id="image-count">0 images</span></div>
+                <div class="admin-list-heading"><h2>Event albums</h2><span id="image-count">0 images</span></div>
                 <div id="admin-gallery-grid" class="admin-gallery-grid"></div>
                 <p id="empty-gallery" class="empty-gallery" hidden>No photographs uploaded yet.</p>
             </div>
