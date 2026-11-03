@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Save Gashua gallery — moments from our diabetes awareness, screening, and community health initiatives.">
+    <title>Gallery | Save Gashua</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .gallery-section {
+            padding: 70px 0;
+        }
+
+        .gallery-intro {
+            max-width: 680px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #EAF3F8;
+            aspect-ratio: 4 / 3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            inset: auto 0 0;
+            padding: 35px 18px 18px;
+            color: #fff;
+            background: linear-gradient(transparent, rgba(11, 38, 61, 0.85));
+            font-size: 14px;
+        }
+
+        .gallery-empty {
+            text-align: center;
+            padding: 50px 20px;
+            color: #657987;
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p>Building a healthier Gashua, one life at a time.</p>
+    </div>
+
+    <!-- Header -->
+    <header class="home-header">
+        <a href="index.html" class="home-brand">
+            <span class="brand-mark">SG</span>
+            <span class="brand-name">Save Gashua</span>
+        </a>
+
+        <button class="mobile-menu-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="home-navigation">
+            ☰
+        </button>
+
+        <nav class="home-nav" id="home-navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="mission.html">Our Mission</a>
+            <a href="campaigns.html">Campaigns</a>
+            <a href="gallery.html" aria-current="page">Gallery</a>
+            <a href="transparency.html">Transparency</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html" class="home-nav-cta">Donate Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="hero-background">
+                <img
+                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600"
+                    alt="Healthcare professionals providing medical care"
+                    fetchpriority="high">
+            </div>
+
+            <div class="hero-content">
+                <span>Our Community</span>
+                <h1>Gallery</h1>
+                <p>Stories, moments, and memories from our commitment to a healthier Gashua.</p>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-intro">
+                    <span>OUR JOURNEY</span>
+                    <h2>Moments That Matter</h2>
+                    <p>
+                        Explore moments that represent our mission to promote
+                        diabetes awareness, encourage early screening, and
+                        support better healthcare in our community.
+                    </p>
+                </div>
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900"
+                             alt="Healthcare professional attending to a patient"
+                             loading="lazy">
+                        <div class="gallery-caption">Community Healthcare</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900"
+                             alt="Medical professional in a healthcare environment"
+                             loading="lazy">
+                        <div class="gallery-caption">Healthcare Awareness</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=900"
+                             alt="Medical equipment used for health screening"
+                             loading="lazy">
+                        <div class="gallery-caption">Health Screening</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=900"
+                             alt="Hospital healthcare environment"
+                             loading="lazy">
+                        <div class="gallery-caption">Better Healthcare</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=900"
+                             alt="Healthcare worker supporting a patient"
+                             loading="lazy">
+                        <div class="gallery-caption">Care and Support</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=900"
+                             alt="Medical professional using a stethoscope"
+                             loading="lazy">
+                        <div class="gallery-caption">Health and Wellness</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="home-footer">
+        <!-- Keep the exact shared footer markup from index.html here. -->
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
