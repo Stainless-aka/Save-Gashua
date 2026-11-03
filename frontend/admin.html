@@ -24,8 +24,10 @@
 
         <section id="login-panel" class="admin-panel admin-login">
             <h2>Administrator sign in</h2>
-            <p>Use your private administrator password to continue.</p>
+            <p>Sign in with your authorised administrator account.</p>
             <form id="login-form">
+                <label for="admin-email">Email address</label>
+                <input id="admin-email" name="email" type="email" autocomplete="username" required>
                 <label for="admin-password">Password</label>
                 <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
                 <button class="admin-button" type="submit">Sign in</button>
@@ -63,6 +65,8 @@
             </div>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>
