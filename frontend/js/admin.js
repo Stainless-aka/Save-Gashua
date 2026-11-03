@@ -127,11 +127,7 @@ async function handleLogin() {
     }
 }
 
-document.getElementById("sign-in-button").addEventListener("click", handleLogin);
-loginForm.addEventListener("submit", event => {
-    event.preventDefault();
-    handleLogin();
-});
+window.handleAdminLogin = handleLogin;
 
 imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
@@ -206,16 +202,19 @@ document.getElementById("logout-button").addEventListener("click", async () => {
 });
 
 (async function init() {
-    const { data: { session } } = await supabase.auth.getSession();
-    const user = session?.user;
-    if (!requireAdmin(user)) {
-        setAuthenticated(false);
-        return;
-    }
-    setAuthenticated(true);
     try {
+        if (!supabase) throw new Error("Supabase client did not load. Check your connection and refresh.");
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) throw error;
+        const user = session?.user;
+        if (!requireAdmin(user)) {
+            setAuthenticated(false);
+            return;
+        }
+        setAuthenticated(true);
         await loadGallery();
     } catch (error) {
-        alert("Could not load gallery: " + error.message);
+        setAuthenticated(false);
+        showMessage(document.getElementById("login-message"), error.message || "Could not initialise administrator login.", "error");
     }
 })();
